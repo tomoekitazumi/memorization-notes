@@ -1,5 +1,12 @@
 <% if logged_in? %>
   <p>ログイン完了ユーザ: <%= current_user.name %></p>
+  <h1 class="text-center">暗記ノート</h1>
+<%= link_to '新しいフォルダを作る', new_folder_path %>
+<a href="#"><p>新しく問題を作る（フォルダがないと作成できません）</p></a>
+<a href="#"><p>問題を探す（他ユーザの問題一覧）</p></a>
+
+<%= render 'folders/folders', folders: @folders %>
+
 <% else %>
   <div class="center jumbotron">
     <div class="text-center">
