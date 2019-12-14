@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_07_093000) do
+ActiveRecord::Schema.define(version: 2019_12_14_072314) do
+
+  create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "folder_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["folder_id"], name: "index_favorites_on_folder_id"
+    t.index ["user_id", "folder_id"], name: "index_favorites_on_user_id_and_folder_id", unique: true
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
 
   create_table "folders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
@@ -18,6 +28,16 @@ ActiveRecord::Schema.define(version: 2019_12_07_093000) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_folders_on_user_id"
+  end
+
+  create_table "quizzes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "folder_id"
+    t.string "question"
+    t.string "answer"
+    t.string "explanation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["folder_id"], name: "index_quizzes_on_folder_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -28,5 +48,8 @@ ActiveRecord::Schema.define(version: 2019_12_07_093000) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "favorites", "folders"
+  add_foreign_key "favorites", "users"
   add_foreign_key "folders", "users"
+  add_foreign_key "quizzes", "folders"
 end

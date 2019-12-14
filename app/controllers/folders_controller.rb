@@ -12,16 +12,17 @@ class FoldersController < ApplicationController
 
   def show
     @folder = Folder.find(params[:id])
+    @quizzes = Quiz.all
   end
 
   def create
     @folder = current_user.folders.build(folder_params)
     if @folder.save
-      flash[:success] = 'メッセージを投稿しました。'
+      flash[:success] = '新規フォルダを作成しました。'
       redirect_to root_path
     else
       @folders = current_user.folders.order(id: :desc).page(params[:page])
-      flash.now[:danger] = 'メッセージの投稿に失敗しました。'
+      flash.now[:danger] = 'フォルダの作成に失敗しました。'
       render 'toppages/index'
     end
   end
@@ -45,6 +46,16 @@ class FoldersController < ApplicationController
     @folder.destroy
     flash[:success] = 'フォルダを削除しました。'
     redirect_back(fallback_location: root_path)
+  end
+  
+  def answers
+    @folder = Folder.find(params[:id])
+    @quizzes = @folder.quizzes.all
+  end
+  
+  def questions
+    @folder = Folder.find(params[:id])
+    @quizzes = @folder.quizzes.all
   end
   
   private

@@ -1,0 +1,21 @@
+
+
+<h1 class="text-center"><%= @folder.content %></h1>
+
+<ul class="list-unstyled">
+  <% @folder.quizzes.each do |quiz| %>
+    <li class="media mb-3">
+      <div class="media-body">
+        <div>
+          <p>問題</p>
+          <p><%= quiz.question %></p>
+          <p>解答</p>
+          <p><%= quiz.answer %></p>
+          <p>解説</p>
+          <p><%= quiz.explanation %></p> 
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>
+<%= link_to 'TOPに戻る', root_path, class: "btn btn-primary" %>

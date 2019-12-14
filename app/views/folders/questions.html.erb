@@ -1,0 +1,14 @@
+<h1 class="text-center"><%= @folder.content %></h1>
+
+<ul class="list-unstyled">
+  <% @quizzes.each do |quiz| %>
+    <li class="media mb-3">
+      <div class="media-body">
+        <div>
+          <p><%= quiz.question %></p>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>
+<%= link_to '解答に進む', answers_folder_path %>

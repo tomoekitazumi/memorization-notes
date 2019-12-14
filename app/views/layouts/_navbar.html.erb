@@ -1,5 +1,5 @@
 <header class="mb-4">
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-sm navbar-dark" style="background-color:#555599;">
     <a class="navbar-brand" href="/">暗記ノート</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
       <span class="navbar-toggler-icon"></span>
@@ -8,10 +8,12 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav">
         <% if logged_in? %>
-          <li class="nav-item">お気に入り</li>
-          <li class="nav-item"><%= link_to 'ログアウト', logout_path, method: :delete %></li>
+          <div class="mr-2">
+            <li class="nav-item"><%= link_to 'お気に入り', likes_user_path(current_user), :style=>"color:white;" %></li>
+          </div>
+          <li class="nav-item"><%= link_to 'ログアウト', logout_path, method: :delete, :style=>"color:white;" %></li>
         <% else %>
-          <li class="nav-item"><%= link_to 'ログイン', login_path, class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to 'ログイン', login_path, class: 'nav-link', :style=>"color:white;" %></li>
         <% end %>
       </ul>
     </div>

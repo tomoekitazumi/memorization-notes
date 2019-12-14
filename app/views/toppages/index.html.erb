@@ -1,9 +1,9 @@
 <% if logged_in? %>
   <p>ログイン完了ユーザ: <%= current_user.name %></p>
   <h1 class="text-center">暗記ノート</h1>
-<%= link_to '新しいフォルダを作る', new_folder_path %>
-<a href="#"><p>新しく問題を作る（フォルダがないと作成できません）</p></a>
-<a href="#"><p>問題を探す（他ユーザの問題一覧）</p></a>
+<p><%= link_to '新しいフォルダを作る', new_folder_path %></p>
+<p><%= link_to '新しく問題を作る（フォルダがないと作成できません）', new_quiz_path %></p>
+<p><%= link_to '問題を探す(全てのユーザの問題一覧)', 'folders#index' %></p>
 
 <%= render 'folders/folders', folders: @folders %>
 

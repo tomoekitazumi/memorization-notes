@@ -1,1 +1,21 @@
 <h1 class="text-center"><%= @folder.content %></h1>
+
+<ul class="list-unstyled">
+  <% @folder.quizzes.each do |quiz| %>
+    <li class="media mb-3">
+      <div class="media-body">
+        <div>
+          <p><%= quiz.question %></p>
+          <p><%= quiz.answer %></p>
+          <p><%= quiz.explanation %></p>
+        </div>
+       
+        <%= render 'favorites/like_button', folder: @folder %>
+        <%= link_to '編集', edit_quiz_path(quiz), class: "btn btn-primary" %>
+        <%= link_to "削除", quiz, method: :delete, data: { confirm: "本当に削除しますか？" }, class: 'btn btn-danger' %>
+      </div>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'TOPに戻る', root_path, class: "btn btn-primary mt-5" %>
