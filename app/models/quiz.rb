@@ -4,6 +4,7 @@ class Quiz < ApplicationRecord
   validates :question, presence: true, length: { maximum: 255 }
   validates :answer, presence: true, length: { maximum: 255 }
   validates :explanation, length: { maximum: 255 }
+  validates :folder_id, presence: true
   
   # def previous
   #   Quiz.where("id < ?", self.id).order("id DESC").first

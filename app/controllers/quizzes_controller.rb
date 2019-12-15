@@ -13,7 +13,7 @@ class QuizzesController < ApplicationController
       redirect_to root_path
     else
       flash.now[:danger] = '問題の作成に失敗しました。'
-      render 'toppages/index'
+      render :new
     end
   end
 

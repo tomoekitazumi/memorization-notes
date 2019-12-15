@@ -7,6 +7,9 @@
             <p class="text-center"><%= link_to folder.content, answers_folder_path(folder) %></p>
           <% else %>
             <p><%= folder.content %>(問題を作成してください)</p>
+            <%= link_to '編集', edit_folder_path(folder), class: "btn btn-primary" %>
+            <%= link_to "削除", folder, method: :delete, data: { confirm: "本当に削除しますか？" }, class: 'btn btn-danger' %>
+            <%= link_to "一覧", folder, class: 'btn btn-secondary' %>
           <% end %>
           
           <% if current_user == folder.user && folder.quizzes.first != nil%>
