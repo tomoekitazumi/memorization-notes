@@ -49,7 +49,7 @@ test:
 #
 production:
   adapter: postgresql
-  encording: unicode
+  encoding: unicode
   pool: 5
   database: memomemo_production
   username: memomemo
