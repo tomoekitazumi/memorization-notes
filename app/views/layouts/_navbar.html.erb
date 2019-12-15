@@ -8,7 +8,10 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav">
         <% if logged_in? %>
-          <div class="mr-2">
+          <div class="mr-3">
+            <li class="nav-item"><%= link_to current_user.name, root_path, :style=>"color:white;" %></li>
+          </div>
+          <div class="mr-3">
             <li class="nav-item"><%= link_to 'お気に入り', likes_user_path(current_user), :style=>"color:white;" %></li>
           </div>
           <li class="nav-item"><%= link_to 'ログアウト', logout_path, method: :delete, :style=>"color:white;" %></li>

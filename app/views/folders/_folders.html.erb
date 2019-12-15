@@ -1,22 +1,23 @@
-<ul class="list-unstyled">
-  <% folders.each do |folder| %>
-    <li class="media mb-3">
-      <div class="media-body">
-        <div class="inline-block">
+<div class="container">
+  <div class="row">
+    <% folders.each do |folder| %>
+      <div class="col-sm-4">
+        <div class="inline-block border mb-4 text-center">
           <% unless folder.quizzes.first == nil %>
-            <p><%= link_to folder.content, answers_folder_path(folder) %></p>
+            <p class="text-center"><%= link_to folder.content, answers_folder_path(folder) %></p>
           <% else %>
             <p><%= folder.content %>(問題を作成してください)</p>
           <% end %>
-          <%= render 'favorites/like_button', folder: folder %>
-          <% if current_user == folder.user %>
+          
+          <% if current_user == folder.user && folder.quizzes.first != nil%>
+            <%= render 'favorites/like_button', folder: folder %>
             <%= link_to '編集', edit_folder_path(folder), class: "btn btn-primary" %>
             <%= link_to "削除", folder, method: :delete, data: { confirm: "本当に削除しますか？" }, class: 'btn btn-danger' %>
             <%= link_to "一覧", folder, class: 'btn btn-secondary' %>
           <% end %>
         </div>
       </div>
-    </li>
-  <% end %>
+    <% end %>
   <%= paginate folders %>
-</ul>
+  </div>
+</div>
