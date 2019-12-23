@@ -13,4 +13,19 @@
  *= require_tree .
  *= require_self
  */
- 
+
+.top {
+    background-image: image-url('top4.jpg');
+    height: 300px;
+    position: relative;
+    
+}
+
+.top .ex {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    margin:0;
+    padding:0;
+}

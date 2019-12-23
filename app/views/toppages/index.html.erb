@@ -1,16 +1,20 @@
 <% if logged_in? %>
-  <div class="center jumbotron jumbotron-extend">
-    <h1 class="text-center">暗記ノート</h1>
+  <div class="top mb-4">
+    <div class="ex">
+      <h1 style="color:white">暗記ノート</h1>
+      <p style="color:white">自分で問題を作成して問題集を作りましょう。他の人が作成した問題集を解くこともできます。使い方は<%= link_to 'こちら', users_path %>から♪</p>
+    </div>
   </div>
   <p><%= link_to '新しいフォルダを作る', new_folder_path %></p>
   <p><%= link_to '新しく問題を作る（フォルダがないと作成できません）', new_quiz_path %></p>
   <p><%= link_to '問題を探す(全てのユーザの問題一覧)', 'folders#index' %></p>
+  <p class="text-center">↓↓↓フォルダ名をクリックして問題を解こう！↓↓↓</p>
   <%= render 'folders/folders', folders: @folders %>
 
 <% else %>
   <div class="center jumbotron">
     <div class="text-center">
-      <h1>暗記ノートへようこそ！</h1>
+      <h1 class="test">暗記ノートへようこそ！</h1>
       <h1>ログインして勉強を始めよう！</h1>
       <%= link_to '新規登録', signup_path, class: 'btn btn-lg btn-primary' %>
     </div>
